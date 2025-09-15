@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Order đồ ăn demo</title>
+  </head>
+
+  <body>
+    <h1>Order đồ ăn demo</h1>
+
+    <h2>Menu</h2>
+    <ul id="menu"></ul>
+
+    <h2>Giỏ hàng</h2>
+    <ul id="cart"></ul>
+    <p><strong>Tổng:</strong> <span id="total">0</span>₫</p>
+    <button onclick="clearCart()">Xóa giỏ hàng</button>
+
+    <script>
+      // Danh sách món ăn vặt
+      const dishes = [
+        { id: 1, name: "Trà sữa trân châu", price: 30000 },
+        { id: 2, name: "Bánh tráng trộn", price: 25000 },
+        { id: 3, name: "Khoai tây chiên", price: 35000 },
+        { id: 4, name: "Gỏi cuốn tôm thịt", price: 40000 },
+        { id: 5, name: "Xoài lắc", price: 20000 },
+      ];
+
+      let cart = [];
+
+      // Hiển thị menu
+      function renderMenu() {
+        const menu = document.getElementById("menu");
+        menu.innerHTML = "";
+        dishes.forEach((d) => {
+          const li = document.createElement("li");
+          li.textContent = `${d.name} - ${d.price}₫ `;
+          const btn = document.createElement("button");
+          btn.textContent = "Thêm";
+          btn.onclick = () => addToCart(d.id);
+          li.appendChild(btn);
+          menu.appendChild(li);
+        });
+      }
+
+      // Thêm món vào giỏ
+      function addToCart(id) {
+        const item = cart.find((i) => i.id === id);
+        if (item) {
+          item.qty++;
+        } else {
+          cart.push({ id, qty: 1 });
+        }
+        renderCart();
+      }
+
+      // Hiển thị giỏ
+      function renderCart() {
+        const cartEl = document.getElementById("cart");
+        const totalEl = document.getElementById("total");
+        cartEl.innerHTML = "";
+        let total = 0;
+        cart.forEach((item) => {
+          const d = dishes.find((x) => x.id === item.id);
+          total += d.price * item.qty;
+          const li = document.createElement("li");
+          li.textContent = `${d.name} x ${item.qty} = ${d.price * item.qty}₫ `;
+          const btnRemove = document.createElement("button");
+          btnRemove.textContent = "Xóa 1";
+          btnRemove.onclick = () => removeOne(item.id);
+          li.appendChild(btnRemove);
+          cartEl.appendChild(li);
+        });
+        totalEl.textContent = total;
+      }
+
+      // Xóa 1 món
+      function removeOne(id) {
+        const item = cart.find((i) => i.id === id);
+        if (item) {
+          item.qty--;
+          if (item.qty <= 0) {
+            cart = cart.filter((i) => i.id !== id);
+          }
+        }
+        renderCart();
+      }
+
+      // Xóa giỏ hàng
+      function clearCart() {
+        cart = [];
+        renderCart();
+      }
+
+      renderMenu();
+      renderCart();
+    </script>
+  </body>
+</html>
