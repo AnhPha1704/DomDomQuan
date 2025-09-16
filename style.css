@@ -1,0 +1,28 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background: #fff8f0;
+}
+
+h1 {
+  color: #d35400;
+}
+
+.menu {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.item {
+  border: 1px solid #ccc;
+  padding: 10px;
+  width: 180px;
+  background: #fff;
+  border-radius: 8px;
+}
+
+.item img {
+  width: 100%;
+  border-radius: 6px;
+}

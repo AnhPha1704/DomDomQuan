@@ -4,17 +4,36 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Đom đóm quán</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍟</text></svg>"
+    />
   </head>
   <body>
-    <h1>Chào mừng đến với Đom đóm quán!</h1>
-    <p>Đây là trang web Order của quán ăn vặt Đom Đóm.</p>
+    <h1>🍟 MENU 🍟</h1>
+    <div class="menu">
+      <div class="item">
+        <img src="images/tra-sua.jpg" alt="Trà sữa" />
+        <h3>Trà sữa</h3>
+        <p>30.000đ</p>
+        <button onclick="addToCart('Trà sữa', 30000)">Add</button>
+      </div>
+      <div class="item">
+        <img src="images/banh-trang.jpg" alt="Bánh tráng trộn" />
+        <h3>Bánh tráng trộn</h3>
+        <p>20.000đ</p>
+        <button onclick="addToCart('Bánh tráng trộn', 20000)">Add</button>
+      </div>
+      <div class="item">
+        <img src="images/xoai-lac.jpg" alt="Xoài lắc" />
+        <h3>Xoài lắc</h3>
+        <p>25.000đ</p>
+        <button onclick="addToCart('Xoài lắc', 25000)">Add</button>
+      </div>
+    </div>
+    <a href="cart.html">🛒 Xem giỏ hàng</a>
 
-    <nav>
-      <ul>
-        <li><a href="/index.html">Trang chủ</a></li>
-        <li><a href="/login.html">Đăng Nhập</a></li>
-      </ul>
-    </nav>
-    <h2>Menu</h2>
+    <script src="script.js"></script>
   </body>
 </html>
